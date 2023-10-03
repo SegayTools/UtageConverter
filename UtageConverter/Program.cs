@@ -34,7 +34,7 @@ internal class Program
 
         foreach (var target in targetsMap)
         {
-            if (target.Title.Contains("ROCK"))
+            if (target.Id == 227 && target.DiffId == 1)
             {
 
             }

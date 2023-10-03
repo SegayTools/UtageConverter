@@ -37,6 +37,7 @@ namespace UtageConverter
                 return default;
 
             outputTempFolder = Utils.GetTempFolderPath();
+            Console.WriteLine($"decrypted .sdt file: {sdtFilePath}");
             var convertCMD = $"sdttoma2 \"{sdtFilePath}\" -o \"{outputTempFolder}\" -b {target.Bpm}";
 
             Utils.SimpleExec(convertCMD, maiConverterFilePath);
