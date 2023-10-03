@@ -14,7 +14,7 @@ internal class Program
     {
         var folderPath = @"D:\maimai FiNALE (SDEY 1.99.00)\maimai\data";
         var maiConverterExePath = @"F:\Source\MaiConverter\dist\maiconverter.exe";
-        var outputFolder = @"F:\output\H202";
+        var outputFolder = @"F:\SDEZ_1.40\Package\option\H202";
         var buddiesPackagesFolder = @"F:\SDEZ_1.40\Package";
         var key = "0x4E2039D03C7AC1A36D10BAC801321D26";
 

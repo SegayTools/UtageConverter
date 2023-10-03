@@ -22,7 +22,7 @@ namespace UtageConverter
                 xmlContent = xmlContent.Replace(replaceKey, value.ToString());
             }
 
-            var buddiesMusicId = 100000 + target.Id;
+            var buddiesMusicId = target.Id + 100000 * (target.DiffId + 1);
             replace("buddiesMusicId", buddiesMusicId);
             replace("musicId", target.Id);
 
