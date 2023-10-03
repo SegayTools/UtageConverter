@@ -15,7 +15,10 @@ namespace UtageConverter.Bases
         public string Artist { get; set; }
         public float Level { get; set; }
         public float Bpm { get; set; }
+        public int DiffId { get; set; }
         public int UtageTypeId { get; set; }
+        public string ChartFileName { get; set; }
+        public string Designer { get; set; }
 
         public string UtageTypeString => UtageTypeId switch
         {
@@ -40,6 +43,5 @@ namespace UtageConverter.Bases
 
         public SkipBorderOptions FixedSkipBorderOptions { get; set; }
         public DisplayOptions FixedDisplayOptions { get; set; }
-        public string Designer { get; set; }
     }
 }

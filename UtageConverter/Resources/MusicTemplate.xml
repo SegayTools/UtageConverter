@@ -70,7 +70,7 @@
       </notesDesigner>
       <notesType>0</notesType>
       <musicLevelID>0</musicLevelID>
-      <maxNotes>0</maxNotes>
+      <maxNotes>${maxNotes}</maxNotes>
       <isEnable>true</isEnable>
     </Notes>
     <Notes>

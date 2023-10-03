@@ -11,7 +11,7 @@ namespace UtageConverter
 {
     public static class BuddiesUtageMusicXmlGenerator
     {
-        public static string Generate(GenerateTarget target)
+        public static string Generate(GenerateTarget target, Ma2GenerateResult genResult)
         {
             using var fs = typeof(BuddiesUtageMusicXmlGenerator).Assembly.GetManifestResourceStream($"UtageConverter.Resources.MusicTemplate.xml");
             var xmlContent = new StreamReader(fs).ReadToEnd();
@@ -38,6 +38,7 @@ namespace UtageConverter
             replace("utageComment", target.Comment);
             replace("utageTypeString", target.UtageTypeString);
             replace("designer", target.Designer);
+            replace("maxNotes", genResult.NoteCount);
 
             replace("level", (int)target.Level);
             replace("levelDecimal", ((int)(target.Level * 100)) % 100);
