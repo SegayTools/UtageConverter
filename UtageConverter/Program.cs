@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,8 +11,8 @@ internal class Program
     {
         var folderPath = @"D:\maimai FiNALE (SDEY 1.99.00)\maimai\data";
         var maiConverterExePath = @"F:\Source\MaiConverter\dist\maiconverter.exe";
-        var outputFolder = @"F:\SDEZ_1.40\Package\option\H202";
-        var buddiesPackagesFolder = @"F:\SDEZ_1.40\Package\Sinmai_Data\StreamingAssets\A000";
+        var outputFolder = @"F:\option\H202";
+        var buddiesPackagesFolder = @"F:\A000";
         var key = "0x4E2039D03C7AC1A36D10BAC801321D26";
         var dxkey = "0x7F4551499DF55E68";
         var ffmpegFolderPath = @"D:\usmTest\Publish\FFmpeg";
