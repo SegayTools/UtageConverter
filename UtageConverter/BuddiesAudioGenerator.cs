@@ -17,7 +17,7 @@ namespace UtageConverter
 
             if (!File.Exists(xwbFilePath))
             {
-                Console.WriteLine($"No .xwb file: {xwbFilePath}");
+                Utils.Log($"No .xwb file: {xwbFilePath}");
                 return default;
             }
 
@@ -26,7 +26,7 @@ namespace UtageConverter
 
             if (!File.Exists(vgmStreamExePath))
             {
-                Console.WriteLine($"No vgmstream-cli.exe: {vgmStreamExePath}");
+                Utils.Log($"No vgmstream-cli.exe: {vgmStreamExePath}");
                 return default;
             }
 
@@ -34,7 +34,7 @@ namespace UtageConverter
 
             if (!File.Exists(outputWavFilePath))
             {
-                Console.WriteLine($"vgmstream-cli.exe can't decode .xwb file: {xwbFilePath}");
+                Utils.Log($"vgmstream-cli.exe can't decode .xwb file: {xwbFilePath}");
                 return default;
             }
 
@@ -47,7 +47,7 @@ namespace UtageConverter
                 KeyCode = 9170825592834449000,
             }, 0, 0, true)) || Directory.GetFiles(outputAcbFolderPath).Length < 2)
             {
-                Console.WriteLine($"generate .acb/.awb file failed");
+                Utils.Log($"generate .acb/.awb file failed");
                 return default;
             }
 

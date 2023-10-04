@@ -15,15 +15,8 @@ namespace UtageConverter
 {
     public class BuddiesJacketGenerator
     {
-        public static (string jacketFilePath, string jacketSmallFilePath) Generate(GenerateTarget target, string jacketFolderPath)
+        public static string GeneratePng(string ddsFilePath)
         {
-            var ddsFilePath = Directory.GetFiles(jacketFolderPath, $"{target.Id.ToString().PadLeft(3, '0')}_*.dds").FirstOrDefault();
-            if (!File.Exists(ddsFilePath))
-            {
-                Console.WriteLine($"No .dds file: {ddsFilePath}");
-                return default;
-            }
-
             var outputPngFilePath = Utils.GetTempFilePath();
             using var image = new MagickImage(ddsFilePath);
             image.Format = MagickFormat.Png;
@@ -31,15 +24,29 @@ namespace UtageConverter
 
             if (!File.Exists(outputPngFilePath))
             {
-                Console.WriteLine($"can't generate .png file: {ddsFilePath}");
+                Utils.Log($"can't generate .png file: {ddsFilePath}", ConsoleColor.Red);
                 return default;
             }
+
+            return outputPngFilePath;
+        }
+
+        public static (string jacketFilePath, string jacketSmallFilePath) Generate(GenerateTarget target, string jacketFolderPath)
+        {
+            var ddsFilePath = Directory.GetFiles(jacketFolderPath, $"{target.Id.ToString().PadLeft(3, '0')}_*.dds").FirstOrDefault();
+            if (!File.Exists(ddsFilePath))
+            {
+                Utils.Log($"No .dds file: {ddsFilePath}", ConsoleColor.Red);
+                return default;
+            }
+
+            var outputPngFilePath = GeneratePng(ddsFilePath);
 
             var programFolderPath = Path.GetDirectoryName(typeof(BuddiesAudioGenerator).Assembly.Location);
             var generatorStreamExePath = Path.Combine(programFolderPath, "jacketGenerator", "JacketGenerator.exe");
             if (!File.Exists(generatorStreamExePath))
             {
-                Console.WriteLine($"JacketGenerator.exe file not found: {generatorStreamExePath}");
+                Utils.Log($"JacketGenerator.exe file not found: {generatorStreamExePath}", ConsoleColor.Red);
                 return default;
             }
 
@@ -61,7 +68,7 @@ namespace UtageConverter
             var abFile = Directory.GetFiles(outputTempFolder, "*.ab").FirstOrDefault();
             if (!File.Exists(abFile))
             {
-                Console.WriteLine($"Can't generate .ab file, cmd: {cmd}");
+                Utils.Log($"Can't generate .ab file, cmd: {cmd}", ConsoleColor.Red);
                 return exePath;
             }
 

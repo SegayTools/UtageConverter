@@ -28,14 +28,26 @@ namespace UtageConverter
             return filePath;
         }
 
-        public static void SimpleExec(string argLine, string exeFilePath)
+        public static void SimpleExec(string argLine, string exeFilePath, string currentDirectory = default)
         {
-            var process = Process.Start(new ProcessStartInfo(exeFilePath)
+            Log($"EXEC:\t{Path.GetFileName(exeFilePath)} {argLine.Trim()}", ConsoleColor.DarkGray);
+            var startInfo = new ProcessStartInfo(exeFilePath)
             {
                 CreateNoWindow = true,
                 Arguments = argLine,
-            });
+            };
+            if (Directory.Exists(currentDirectory))
+                startInfo.WorkingDirectory = currentDirectory;
+            var process = Process.Start(startInfo);
             process.WaitForExit();
+        }
+
+        public static void Log(string msg, ConsoleColor color = ConsoleColor.White)
+        {
+            var backup = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+            Console.WriteLine(msg);
+            Console.ForegroundColor = backup;
         }
     }
 }

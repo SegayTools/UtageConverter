@@ -15,11 +15,29 @@ namespace UtageConverter
     {
         private HashSet<int> jacketMusicIds = new();
         private HashSet<string> fumenMusicIds = new();
+        private HashSet<int> movieMusicIds = new();
 
         public BuddiesDataLoader(string packageFolder)
         {
-            LoadJackets(packageFolder);
-            LoadMusic(packageFolder);
+            Task.WaitAll(new[]
+            {
+                Task.Run(() => LoadJackets(packageFolder)),
+                Task.Run(() => LoadMusic(packageFolder)),
+                Task.Run(() => LoadMovie(packageFolder)),
+            });
+        }
+
+        private void LoadMovie(string packageFolder)
+        {
+            movieMusicIds.Clear();
+
+            var regex = new Regex(@"(\d+).dat");
+            var movies = Directory.GetFiles(packageFolder, "*.dat", SearchOption.AllDirectories);
+            foreach (var match in movies.Select(x => regex.Match(Path.GetFileName(x))).Where(x => x.Success))
+            {
+                var musicId = int.Parse(match.Groups[1].Value);
+                movieMusicIds.Add(musicId);
+            }
         }
 
         private void LoadMusic(string packageFolder)
@@ -50,6 +68,7 @@ namespace UtageConverter
 
         public bool ContainJacket(int musicId) => jacketMusicIds.Contains(musicId);
         public bool ContainMusic(int musicId) => fumenMusicIds.Contains($"{musicId}");
+        public bool ContainMovie(int musicId) => movieMusicIds.Contains(musicId);
         public bool ContainMusicDiff(int musicId, int diffId) => fumenMusicIds.Contains($"{musicId}_{diffId}");
     }
 }

@@ -30,7 +30,7 @@ namespace UtageConverter
 
                 var decryptedFilePath = Directory.GetFiles(outputTempFolder).FirstOrDefault();
 
-                Console.WriteLine($"decrypted {Path.GetFileName(tableFolderPath)} file: {decryptedFilePath}");
+                Utils.Log($"decrypted {Path.GetFileName(tableFolderPath)} file: {decryptedFilePath}");
                 if (string.IsNullOrWhiteSpace(decryptedFilePath) || !File.Exists(decryptedFilePath))
                     return new List<T>();
 
