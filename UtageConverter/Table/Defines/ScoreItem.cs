@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace UtageConverter.Table.Defines
+﻿namespace UtageConverter.Table.Defines
 {
     [TableName("MMSCORE")]
     public class ScoreItem
     {
         [TableFieldOrder(0)]
-        public int ID{ get; set; }
+        public int ID { get; set; }
         [TableFieldOrder(1)]
-        public string Name{ get; set; }
+        public string Name { get; set; }
         [TableFieldOrder(2)]
         public float LV { get; set; }
         [TableFieldOrder(3)]

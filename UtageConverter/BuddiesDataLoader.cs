@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UtageConverter.Table.Defines;
-using UtageConverter.Table;
 using System.Text.RegularExpressions;
-using UtageConverter.Bases;
+using System.Threading.Tasks;
 
 namespace UtageConverter
 {

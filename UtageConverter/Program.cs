@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using UtageConverter;
 using UtageConverter.Bases;
-using UtageConverter.Table;
-using UtageConverter.Table.Defines;
 
 internal class Program
 {

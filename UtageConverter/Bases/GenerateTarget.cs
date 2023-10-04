@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UtageConverter.Table.Defines;
-
-namespace UtageConverter.Bases
+﻿namespace UtageConverter.Bases
 {
     public class GenerateTarget
     {
